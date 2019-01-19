@@ -1,6 +1,9 @@
 package org.shancm.springbootdemo;
 
 import com.csvreader.CsvWriter;
+import jxl.Workbook;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.CollectionUtils;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +52,23 @@ public class SpringBootDemoApplicationTests {
 		write.writeRecord(strings, true);
 
 			write.close();
+	}
+
+
+	public static void location2() throws IOException {
+
+		WritableWorkbook boot = Workbook.createWorkbook(new File("123.xls"));
+
+		WritableSheet sheet = boot.createSheet("orders", 0);
+
+		int row = 1;
+		int column = 1;
+
+
+		File file = new File(new File("").getAbsolutePath() + "/orders.xls");
+
+
+
 	}
 }
 
