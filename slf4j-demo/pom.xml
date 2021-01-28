@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>org.shancm</groupId>
+    <artifactId>slf4j-demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>slf4j-demo</name>
+    <description>Demo project for Spring Boot</description>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+        <!--<dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.30</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <!--<profile.log4j.appender.info.File>/home/dubbo/billion-cpa-data/logs/stdout.log
+                </profile.log4j.appender.info.File>
+                <profile.log4j.appender.error.File>/home/dubbo/billion-cpa-data/logs/stderr.log
+                </profile.log4j.appender.error.File>-->
+                <profile.log4j.appender.info.File>E:\workspace\logs\stdout.log
+                </profile.log4j.appender.info.File>
+                <profile.log4j.appender.error.File>E:\workspace\logs\stderr.log
+                </profile.log4j.appender.error.File>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources/</directory>
+                        <filtering>true</filtering>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <profile.dubbo.registry.address>172.16.88.229:2181,172.16.201.167:2181,172.16.88.230:2181
+                </profile.dubbo.registry.address>
+                <profile.dubbo.protocol.port>22139</profile.dubbo.protocol.port>
+                <profile.dubbo.log4j.file>/u01/dubbo/billion-cpa-data/logs/keynes-cpa-data.log
+                </profile.dubbo.log4j.file>
+                <profile.log4j.appender.stdout.File>./logs/stdout.log</profile.log4j.appender.stdout.File>
+                <profile.log4j.appender.stderr.File>./logs/stderr.log</profile.log4j.appender.stderr.File>
+                <profile.cache.file>./cache/billion-cpa-data.cache</profile.cache.file>
+                <profile.database_fund.url>
+                    jdbc:mysql://rm-bp1a655336gl4r84l.mysql.rds.aliyuncs.com/dbkeynesfund?useUnicode=true&amp;characterEncoding=utf-8
+                </profile.database_fund.url>
+                <profile.database_fund.username>keynesfund</profile.database_fund.username>
+                <profile.database_fund.password>uubee603_keynesfund</profile.database_fund.password>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+
+        <profile>
+            <id>pro</id>
+            <properties>
+                <profile.dubbo.registry.address>172.16.8.242:2181,172.16.8.243:2181,172.16.8.244:2181
+                </profile.dubbo.registry.address>
+                <profile.dubbo.protocol.port>23100</profile.dubbo.protocol.port>
+                <profile.dubbo.log4j.file>/u01/dubbo/billion-cpa-data/logs/keynes-cpa-data.log
+                </profile.dubbo.log4j.file>
+                <profile.log4j.appender.stdout.File>/u01/dubbo/billion-cpa-data/logs/stdout.log
+                </profile.log4j.appender.stdout.File>
+                <profile.log4j.appender.stderr.File>/u01/dubbo/billion-cpa-data/logs/stderr.log
+                </profile.log4j.appender.stderr.File>
+                <profile.cache.file>./cache/billion-cpa-data.cache</profile.cache.file>
+                <profile.database_fund.url>
+                    jdbc:mysql://rm-bp1f15a19739f93cc.mysql.rds.aliyuncs.com/dbfund?useUnicode=true&amp;characterEncoding=utf-8
+                </profile.database_fund.url>
+                <profile.database_fund.username>fund</profile.database_fund.username>
+                <profile.database_fund.password>Billion_fund</profile.database_fund.password>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+    </profiles>
+</project>
