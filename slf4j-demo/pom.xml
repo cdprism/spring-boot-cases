@@ -21,26 +21,31 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
-        </dependency>
+        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
-        <!--<dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.30</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.30</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -68,10 +73,11 @@
                 </profile.log4j.appender.info.File>
                 <profile.log4j.appender.error.File>/home/dubbo/billion-cpa-data/logs/stderr.log
                 </profile.log4j.appender.error.File>-->
-                <profile.log4j.appender.info.File>E:\workspace\logs\stdout.log
+                <profile.log4j.appender.info.File>E:\\workspace\\logs\\stdout.log
                 </profile.log4j.appender.info.File>
-                <profile.log4j.appender.error.File>E:\workspace\logs\stderr.log
+                <profile.log4j.appender.error.File>E:\\workspace\\logs\\stderr.log
                 </profile.log4j.appender.error.File>
+
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
