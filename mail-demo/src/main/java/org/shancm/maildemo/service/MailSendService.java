@@ -1,5 +1,7 @@
 package org.shancm.maildemo.service;
 
+import javax.mail.MessagingException;
+
 /**
  * @Classname MailSendService
  * @Description TODO
@@ -9,4 +11,6 @@ package org.shancm.maildemo.service;
 public interface MailSendService {
 
     void sendSimpleMail(String to, String subject, String content);
+
+    void sendTemplateMail(String to, String subject) throws MessagingException;
 }
